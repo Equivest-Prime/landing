@@ -9,35 +9,25 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "Can Kresna integrate with our existing CRM or tools?",
+    question: "What regulatory licenses does Equivest hold?",
     answer:
-      "Yes, Kresna seamlessly integrates with popular CRMs like Salesforce, HubSpot, and Pipedrive, as well as tools like Slack, Gmail, and more.",
+      "Equivest (Mauritius) Limited holds an Investment Dealer (Full Service Dealer, excluding underwriting) License No. GB24203378, issued by the Financial Services Commission (FSC) of Mauritius.",
   },
   {
-    question: "Can Kresna help automate our follow-ups?",
+    question: "How are client funds protected?",
     answer:
-      "Absolutely. Kresna can automatically schedule and send personalized follow-up emails based on prospect behavior and your defined workflows.",
+      "Client funds are held in segregated accounts at tier-1 banks, separate from company operational funds. This ensures that client money is protected and not used for any other purpose.",
   },
   {
-    question: "Does Kresna support team collaboration?",
+    question: "What AML/KYC procedures are in place?",
     answer:
-      "Absolutely. You can share notes, assign tasks, and track progress together, keeping everyone aligned in real time.",
+      "We implement comprehensive AML/KYC procedures in compliance with international standards. This includes identity verification, source of funds verification, ongoing monitoring, and regular risk assessments.",
   },
   {
-    question: "Is my data secure with Kresna?",
+    question: "How does Equivest ensure operational compliance?",
     answer:
-      "Yes. We use enterprise-grade encryption, SOC 2 compliance, and regular security audits to ensure your data is always protected.",
-  },
-  {
-    question: "Can we customize Kresna to fit our workflow?",
-    answer:
-      "Yes. Kresna is built to adapt — you can tailor automations, AI suggestions, and reporting to match your exact process.",
-  },
-  {
-    question: "Do I need any technical skills to set it up?",
-    answer:
-      "Not at all. Kresna is designed for ease of use with a simple onboarding process. Most teams are up and running within minutes.",
-  },
+      "We maintain a robust compliance framework with regular internal audits, staff training, and external reviews. Our dedicated compliance team ensures adherence to all regulatory requirements and industry best practices.",
+  }
 ];
 
 // Plus icon for collapsed state
@@ -95,9 +85,8 @@ function AccordionItem({ item, isOpen, onToggle }: AccordionItemProps) {
       </button>
 
       <div
-        className={`grid transition-all duration-300 ease-in-out ${
-          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-        }`}
+        className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          }`}
       >
         <div className="overflow-hidden">
           <p className="px-5 pb-5 text-sm text-muted-foreground leading-relaxed">
