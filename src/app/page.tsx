@@ -4,6 +4,7 @@ import About from "@/components/About";
 import ProblemSolution from "@/components/ProblemSolution";
 import Features from "@/components/Features";
 import UseCases from "@/components/UseCases";
+import WorldMapSection from "@/components/WorldMapSection";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -17,6 +18,7 @@ export default function Home() {
       <ProblemSolution />
       <Features />
       <UseCases />
+      <WorldMapSection />
       <FAQ />
       <Contact />
       <Footer />

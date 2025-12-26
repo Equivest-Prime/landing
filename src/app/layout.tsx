@@ -5,6 +5,7 @@ import "lenis/dist/lenis.css";
 import Navbar from "@/components/Navbar";
 import FloatingBadge from "@/components/FloatingBadge";
 import SmoothScroll from "@/components/SmoothScroll";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -30,15 +31,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${dmSans.variable} ${instrumentSerif.variable} antialiased`}
       >
-        <SmoothScroll>
-          <Navbar />
-          {children}
-          <FloatingBadge />
-        </SmoothScroll>
+        <ThemeProvider>
+          <SmoothScroll>
+            <Navbar />
+            {children}
+            <FloatingBadge />
+          </SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   );
