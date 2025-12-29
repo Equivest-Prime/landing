@@ -55,6 +55,7 @@ const tabContent: Record<string, TabContent> = {
   },
   brokerage: {
     label: "Brokerage Support",
+    title: " Equivest, we go beyond liquidity - we become your infrastructure partner. Our comprehensive brokerage support solutions are designed to help you launch, scale, and optimise your operations with confidence.",
     image: "/assets/images/buy.png",
     description: [
       {
@@ -176,7 +177,7 @@ export default function Solutions() {
                   alt={content.label}
                   height={200}
                   width={200}
-                  className="object-contain object-top"
+                  className="object-contain object-top grayscale"
                 />
               </motion.div>
             </div>
@@ -188,10 +189,10 @@ export default function Solutions() {
                   fontStyle: "italic",
                 }}
               >
-                Liquidity Solutions
+                {content.label}
               </span>
-              <h3 className="text-3xl lg:text-4xl font-semibold tracking-tighter leading-0 capitalize ">
-                Delivering precise liquidity streams that empower your trading operations with unprecedented market access and execution quality
+              <h3 className="text-3xl lg:text-3xl font-semibold tracking-tighter capitalize ">
+                {content.title}
               </h3>
             </div>
             <br />
