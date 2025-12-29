@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { motion } from "motion/react";
 import DottedMap from "dotted-map";
 
@@ -18,7 +18,15 @@ export default function WorldMap({
   dots = [],
   lineColor = "#232323",
 }: MapProps) {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Use a stable default for SSR, only use theme after mount
+  const theme = mounted ? resolvedTheme : "light";
 
   const svgMap = useMemo(() => {
     const map = new DottedMap({ height: 100, grid: "diagonal" });
@@ -69,19 +77,6 @@ export default function WorldMap({
 
   return (
     <div className="w-full aspect-[2/1] dark:bg-black bg-white rounded-lg relative font-sans">
-      <style jsx>{`
-        .map-point {
-          cursor: pointer;
-        }
-        .map-point .tooltip {
-          opacity: 0;
-          transition: opacity 0.15s ease-in-out;
-          pointer-events: none;
-        }
-        .map-point:hover .tooltip {
-          opacity: 1;
-        }
-      `}</style>
       <img
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
         className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none"
@@ -205,14 +200,14 @@ export default function WorldMap({
 
         {/* Hoverable points with tooltips - rendered last to be on top */}
         {uniquePoints.map((point, i) => (
-          <g key={`tooltip-point-${i}`} className="map-point">
+          <g key={`tooltip-point-${i}`} className="group cursor-pointer">
             <circle
               cx={point.x}
               cy={point.y}
               r="12"
               fill="transparent"
             />
-            <g className="tooltip">
+            <g className="opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none">
               <rect
                 x={point.x - (point.label.length * 4 + 12)}
                 y={point.y - 32}
