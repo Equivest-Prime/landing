@@ -1,55 +1,65 @@
 "use client";
 
+import Header from "./common/Header";
+import CountUp from "./ui/countUp";
+
 const stats = [
   {
-    value: "8.9M+",
-    title: "User reach rate",
-    description: "Empowering brands with, high-performing designs",
+    value: 150,
+    subText: "+",
+    title: "Trading Instruments",
   },
   {
-    value: "65+",
-    title: "Projects completed",
-    description: "Empowering brands with, high-performing designs",
+    value: "6",
+    title: "Global Offices",
   },
   {
-    value: "78%",
-    title: "Client retention rate",
-    description: "Empowering brands with, high-performing designs",
+    value: "99.9",
+    subText: "%",
+    title: "Uptime Reliability",
   },
+
 ];
 
 export default function Stats() {
   return (
-    <section className="relative bg-[var(--background)] py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="stats" className="relative bg-[var(--background)] py-20 lg:py-32 px-4">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
+        <Header subtitle={"Our Stats"} title={"Numbers will not lie"} />
+        <br />
+
         <div className="max-w-2xl mb-16 lg:mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-[var(--foreground)] uppercase mb-6 opacity-0 animate-fade-in-up">
-            Numbers Won&apos;t Lie
-          </h2>
           <p className="text-lg text-gray-600 leading-relaxed opacity-0 animate-fade-in-up animation-delay-100">
-            Delivering record-breaking results backed by powerful metrics
-            and real impact—because great design drives real growth.
+            Equivest Prime delivers exceptional trading solutions with industry-leading performance metrics and proven results—empowering traders worldwide.
           </p>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {stats.map((stat, index) => (
             <div
               key={stat.title}
-              className={`opacity-0 animate-fade-in-up animation-delay-${(index + 2) * 100}`}
+              className={`opacity-0 animate-fade-in-up animation-delay-${(index + 2) * 100} p-6 lg:p-8 rounded-2xl bg-background border border-border z-10 h-full`}
+              style={{
+                boxShadow: "0 10px 40px -10px rgba(0,0,0,0.1)",
+              }}
             >
               <div className="space-y-4">
                 <span className="block text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-[var(--foreground)]">
-                  {stat.value}
+                  <CountUp
+                    from={0}
+                    to={Number(stat.value)}
+                    separator=","
+                    direction="up"
+                    duration={1}
+                    className="count-up-text"
+                  />
+                  {stat.subText || ""}
                 </span>
-                <h3 className="text-xl font-semibold text-[var(--foreground)]">
+                <span className="text-xl font-medium tracking-tighter text-muted-foreground">
                   {stat.title}
-                </h3>
-                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
-                  {stat.description}
-                </p>
+                </span>
               </div>
             </div>
           ))}

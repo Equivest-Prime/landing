@@ -59,7 +59,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-visible bg-background pt-16 lg:pt-20">
+    <footer className="relative overflow-visible bg-background pt-16 lg:pt-20 px-4">
       {/* 3D Floating Icon - Positioned outside container to float on top */}
       <div className="absolute top-0 right-8 md:right-10 lg:right-16 xl:right-24 z-50 animate-float">
         <div className="relative">
@@ -83,7 +83,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="container relative px-4 md:px-6 mx-auto max-w-7xl">
+      <div className="container relative mx-auto max-w-7xl">
         <div className="flex flex-col-reverse lg:flex-row gap-10 lg:gap-4">
           {/* Branded Card - Left */}
           <div
@@ -112,7 +112,7 @@ export default function Footer() {
             {/* Stay in touch + Social Icons */}
             <div className="flex items-center justify-between mt-8">
               <span
-                className="text-white/90 text-sm"
+                className="text-white/90 text-base"
                 style={{ fontFamily: "var(--font-instrument)", fontStyle: "italic" }}
               >
                 Stay in touch!
@@ -178,13 +178,24 @@ export default function Footer() {
               </p>
               <div className="flex flex-row justify-between items-center mt-4">
                 <span style={{ fontFamily: "var(--font-instrument)", fontStyle: "" }}>License Number: GB24203378</span>
-                <span className="text-sm tracking-tighter">© {new Date().getFullYear()} Equivest. All rights reserved.</span>
+                <span className="text-base tracking-tighter">© {new Date().getFullYear()} Equivest. All rights reserved.</span>
               </div>
             </div>
           </div>
         </div>
+        {/* <div className="flex flex-row justify-end w-full">
+          <div className="flex flex-row mt-4  items-center gap-2">
+            <span
+              className="text-black/90 text-base text-right"
+              style={{ fontFamily: "var(--font-instrument)", fontStyle: "italic" }}
+            >
+              Forged by
+            </span>
+            <Image src={"/assets/images/fd-dark.png"} alt={"Kresna Logo"} width={24} height={24} />
+          </div>
+        </div> */}
 
-        <div className="flex items-end justify-center pointer-events-none select-none overflow-hidden">
+        <div className="flex s-end justify-center pointer-events-none select-none overflow-hidden">
           <span
             className="text-[20vw] lg:text-[20vw] font-bold tracking-tight leading-none"
             style={{

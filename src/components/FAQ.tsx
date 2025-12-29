@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { FileTextIcon, Handshake, Plus, X, } from "lucide-react";
 
 interface FAQItem {
   question: string;
@@ -30,39 +31,20 @@ const faqData: FAQItem[] = [
   }
 ];
 
-// Plus icon for collapsed state
-const PlusIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <line x1="12" y1="5" x2="12" y2="19" />
-    <line x1="5" y1="12" x2="19" y2="12" />
-  </svg>
-);
-
-// Close icon for expanded state
-const CloseIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <line x1="18" y1="6" x2="6" y2="18" />
-    <line x1="6" y1="6" x2="18" y2="18" />
-  </svg>
-);
+const terms = [
+  {
+    title: "Terms & Conditions",
+    description: "View PDF",
+    icon: Handshake,
+    link: "https://equivestprime.com/document/Terms%20&%20Conditions%20Equivest.pdf",
+  },
+  {
+    title: "Privacy Policy",
+    description: "View PDF",
+    icon: FileTextIcon,
+    link: "https://equivestprime.com/document/Privacy%20Policy%20Equivest.pdf",
+  },
+]
 
 interface AccordionItemProps {
   item: FAQItem;
@@ -78,9 +60,9 @@ function AccordionItem({ item, isOpen, onToggle }: AccordionItemProps) {
         className="w-full flex items-center justify-between gap-4 p-5 text-left transition-colors hover:bg-muted/80"
         aria-expanded={isOpen}
       >
-        <span className="font-medium text-foreground pr-4">{item.question}</span>
+        <span className="font-medium text-xl tracking-tighter text-foreground pr-4">{item.question}</span>
         <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-background flex items-center justify-center text-muted-foreground">
-          {isOpen ? <CloseIcon /> : <PlusIcon />}
+          {isOpen ? <X /> : <Plus />}
         </span>
       </button>
 
@@ -89,7 +71,7 @@ function AccordionItem({ item, isOpen, onToggle }: AccordionItemProps) {
           }`}
       >
         <div className="overflow-hidden">
-          <p className="px-5 pb-5 text-sm text-muted-foreground leading-relaxed">
+          <p className="px-5 pb-5 text-base text-muted-foreground leading-relaxed">
             {item.answer}
           </p>
         </div>
@@ -115,25 +97,50 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-background">
-      <div className="container px-4 md:px-6 mx-auto max-w-7xl">
-        <div className="grid lg:grid-cols-[280px_1fr] gap-12 lg:gap-16">
+    <section id="faq" className="py-20 lg:py-28 bg-background px-4">
+      <div className="container mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Side - Header */}
-          <div className="lg:sticky lg:top-24 lg:self-start">
-            <span
-              className="text-muted-foreground text-sm mb-3 block"
-              style={{
-                fontFamily: "var(--font-instrument)",
-                fontStyle: "italic",
-              }}
-            >
-              FAQ
-            </span>
-            <h2 className="text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1]">
-              Frequently
-              <br />
-              Asked Questions
-            </h2>
+          <div className="flex flex-col justify-between">
+            <div>
+              <span
+                className="text-muted-foreground text-base mb-3 block"
+                style={{
+                  fontFamily: "var(--font-instrument)",
+                  fontStyle: "italic",
+                }}
+              >
+                FAQ
+              </span>
+              <h2 className="text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1]">
+                Frequently
+                <br />
+                Asked Questions
+              </h2>
+            </div>
+            <div className="flex flex-row w-full gap-4 mt-8">
+              {/* Chat to Sales Card */}
+              {terms.map((term, index) => (
+                <a
+                  key={index}
+                  href={term.link}
+                  target="_blank"
+                  className="flex flex-col items-start p-4 rounded-2xl border border-gray-200 transition-colors hover:border hover:border-accent hover:shadow-lg w-full"
+                >
+                  <div className="bg-accent/10 rounded-lg mb-4">
+                    <term.icon className="size-5 text-gray-500" />
+                  </div>
+                  <div>
+                    <h2 className="font-medium text-foreground">
+                      {term.title}
+                    </h2>
+                    <p className="text-base text-muted-foreground">
+                      {term.description}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Right Side - Accordion */}
@@ -149,6 +156,6 @@ export default function FAQ() {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 }

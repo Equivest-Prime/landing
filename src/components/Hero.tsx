@@ -7,18 +7,18 @@ import { Badge } from "@/components/ui/badge";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[var(--background)]">
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 ">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+    <section id="hero" className="relative overflow-hidden bg-[var(--background)] px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto">
+        <div className="flex flex-col items-center lg:flex-row gap-12 lg:gap-16 lg:items-center">
           {/* Left Column - Content */}
-          <div className="space-y-8">
+          <div className="w-full lg:w-auto space-y-8 mt-4">
             {/* Announcement Badge */}
             <div className="opacity-0 animate-fade-in-up">
               <Badge
                 variant="outline"
                 className="px-4 py-2 bg-white/80 backdrop-blur-sm text-sm font-medium text-[var(--primary)] hover:border-[var(--primary)]/30 hover:bg-blue-50/50 transition-all duration-300 cursor-pointer group"
               >
-                <span className="relative flex h-2 w-2 mr-2">
+                <span className="relative md:flex h-2 w-2 mr-2 hidden ">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--primary)]" />
                 </span>
@@ -29,7 +29,7 @@ export default function Hero() {
 
             {/* Main Heading */}
             <div className="space-y-6 opacity-0 animate-fade-in-up animation-delay-100">
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold leading-[1.1] tracking-tighter text-[var(--foreground)]">
+              <h1 className="text-4xl lg:text-5xl font-semibold leading-[1.1] tracking-tighter text-[var(--foreground)]">
                 Institutional-Grade Access to{" "}
                 <span className="relative">
                   <span className="relative z-10">Global Financial Markets</span>
