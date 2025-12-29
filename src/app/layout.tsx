@@ -34,6 +34,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${dmSans.variable} ${instrumentSerif.variable} antialiased`}
+        suppressHydrationWarning
       >
         <ThemeProvider>
           <SmoothScroll>

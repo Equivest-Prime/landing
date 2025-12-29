@@ -1,9 +1,9 @@
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
-import About from "@/components/About";
-import ProblemSolution from "@/components/ProblemSolution";
+import TrustedGlobally from "@/components/TrustedGlobally";
+import Regulations from "@/components/Regulations";
 import Features from "@/components/Features";
-import UseCases from "@/components/UseCases";
+import Solutions from "@/components/Solutions";
 import WorldMapSection from "@/components/WorldMapSection";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
@@ -14,12 +14,12 @@ export default function Home() {
     <main>
       <Hero />
       <Stats />
-      <About />
-      <ProblemSolution />
       <Features />
-      <UseCases />
+      <Solutions />
       <WorldMapSection />
+      <Regulations />
       <FAQ />
+      <TrustedGlobally />
       <Contact />
       <Footer />
     </main>
